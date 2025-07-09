@@ -4,8 +4,8 @@
                 <h1 class="fw-bold" style="font-size: 50px;">Testimonials</h1>
                 <hr style="width: 380px; border:#f9a700 3px solid; margin: 0 auto;" />
             </div>
-            <div class="testi-wrapper overflow-hidden position-relative" style="width: 100%;">  
-            <div class="testi mt-5 mb-1 d-flex animation-slide">
+            <div class="testi-wrapper overflow-hidden position-relative" style="width: 100%;">
+                <div class="testi mt-5 mb-1 d-flex animation-slide">
                 {{-- Testi 1 --}}
                 <div class="testi1 ms-5 d-flex" style="padding: 18px; height:135px; width:650px; background-color: white; box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);-webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75); -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75); border-radius: 100px 20px 20px 100px; ">
                     <div class="">

@@ -1,18 +1,23 @@
 
         {{-- Awal Service Section --}}
-        <section id="services" style="padding: 60px; margin-top: 100px;">
+        <section id="services" style="padding: 60px; margin-top: 100px; background-image: url('{{ asset('assets/img/wave-testi.svg') }}');
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;">
             <div class="text-center">
                 <h1 class="fw-bold" style="font-size: 50px;">Our Services</h1>
                 <hr style="width: 380px; border: #30A9FF 3px solid; margin: 0 auto;" />
             </div>
             <div class="col mt-5 position-relative d-flex justify-content-center gap-5">
-                <!-- Background lingkaran -->
+                {{-- <!-- Background lingkaran -->
                 <div class="position-absolute"
                     style="width: 400px; height: 400px; background-color: #30A9FF; z-index: 1; border-radius: 100%; top: 150px; right: 600px;">
                 </div>
                 <div class="position-absolute"
                     style="width: 600px; height: 600px; background-color: #30A9FF; z-index: 2; border-radius: 100%; top: -20px; right: 0; margin-right: -50px;">
                 </div>
+                <!-- Akhir Background lingkaran --> --}}
+
 
                 <!-- Card 1 -->
                 <div class="card position-relative mt-4" style="width: 420px; z-index: 3;">
