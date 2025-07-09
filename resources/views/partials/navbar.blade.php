@@ -7,13 +7,16 @@
                 <a class="nav-link text-dark" href="#hero">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#service">Our Service</a>
+                <a class="nav-link text-dark" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="#services">Our Service</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="#">Shop</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Contact</a>
+                <a class="nav-link text-dark" href="#contact">Contact</a>
             </li>
         </ul>
     </div>
