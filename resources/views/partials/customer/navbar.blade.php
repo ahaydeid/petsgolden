@@ -4,16 +4,16 @@
     <div style="margin-right: 200px">
         <ul class="nav me-5 fw-bold fs-5">
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#hero">Home</a>
+                <a class="nav-link text-dark" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#about">About</a>
+                <a class="nav-link text-dark" href="/#about">About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="#services">Our Service</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Shop</a>
+                <a class="nav-link text-dark" href="/shop">Shop</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="#contact">Contact</a>

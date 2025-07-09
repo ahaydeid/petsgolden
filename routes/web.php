@@ -6,10 +6,14 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
 Route::get('/booking', function () {
     return view('booking');
+});
+
+Route::get('/shop', function () {
+    return view('shop');
 });

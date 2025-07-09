@@ -15,7 +15,7 @@
                             alt="" /> <img src="{{ asset('assets/img/wa.png') }}" alt="" />
                     </div>
                     <div class="button mt-3">
-                        <a href="">
+                        <a href="/booking">
                         <button type="button" class="btn text-light fw-bold px-5" style="
                                 box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75);
                                 -webkit-box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75);
