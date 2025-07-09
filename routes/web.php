@@ -14,6 +14,7 @@ Route::get('/booking', function () {
     return view('booking');
 });
 
+
 Route::get('/shop', function () {
     return view('shop');
 });

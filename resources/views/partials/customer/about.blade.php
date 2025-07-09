@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-7 pe-5">
                     <h2 class="fw-bold text-light">Who we are?</h2>
-                    <p class="lh-sm fst-italic  text-light" style="font-size: 30px">
+                    <p class="lh-sm text-light" style="font-size: 30px">
                         PetsGolden offers professional dog and cat grooming
                         services across Jakarta, Tangerang, Bogor, Depok, and
                         Bekasi. Their skilled team delivers top-tier care to

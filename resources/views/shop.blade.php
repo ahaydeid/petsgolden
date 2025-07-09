@@ -6,7 +6,7 @@
 
 {{-- Tombol Back Start --}}
 <div class="button mb-4" style="margin-top: 105px; margin-left: 80px;">
-<h1 class="text-center mb-5 fw-bold">Product Showcase</h1>
+<h1 class="text-center mb-5 fw-bold">PETSGOLDEN STORE</h1>
     <a href="../">
         <button type="button" class="btn text-light fw-bold px-5" style="
             box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75);
