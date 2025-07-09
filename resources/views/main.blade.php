@@ -8,6 +8,24 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('logo-rounded.ico') }}"/>
         <title>PETSGOLDEN</title>
         <style>
+
+            body {
+            position: relative;
+            margin: 0;
+            min-height: 100vh;
+            z-index: 0;
+            }
+
+            body::before {
+            content: "";
+            background-image: url('{{ asset('assets/img/bgbody.jpg') }}');
+            background-position: center;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.02;
+            z-index: -1;
+            }
+
             @keyframes slide-left {
             0% {
                 transform: translateX(0);
@@ -49,9 +67,14 @@
         @include('partials.hero')
 
         {{-- Awal About Section --}}
-        <section id="about" style="padding: 60px">
-            <h1 class="fw-bold" style="font-size: 50px;">About</h1>
-            <hr style="width: 200px; border: #f9a700 3px solid" />
+        <section id="about" style="padding: 60px; background-image: url('{{ asset('assets/img/wave.svg') }}');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;">
+            <div class="text-center">
+                <h1 class="fw-bold text-light" style="font-size: 50px;">About</h1>
+                <hr style="width: 200px; border: white 3px solid; margin: 0 auto;" />
+            </div>
             <div class="row" style="margin-top: 80px">
                 <div class="col-4 position-relative" style="margin-left: 50px">
                     <div class="position-absolute" style="
@@ -67,8 +90,8 @@
                     400px; position: relative; z-index: 3;" alt="">
                 </div>
                 <div class="col-7 pe-5">
-                    <h2 class="fw-bold">Who we are?</h2>
-                    <p class="lh-sm fst-italic" style="font-size: 30px">
+                    <h2 class="fw-bold text-light">Who we are?</h2>
+                    <p class="lh-sm fst-italic  text-light" style="font-size: 30px">
                         PetsGolden offers professional dog and cat grooming
                         services across Jakarta, Tangerang, Bogor, Depok, and
                         Bekasi. Their skilled team delivers top-tier care to
@@ -130,10 +153,11 @@
 
         {{-- Awal Service Section --}}
         <section id="services" style="padding: 60px; margin-top: 100px;">
-            <h1 class="fw-bold" style="font-size: 50px;">Our Services</h1>
-            <hr style="width: 380px; border: #30A9FF 3px solid" />
-
-            <div class="col position-relative d-flex justify-content-center gap-5">
+            <div class="text-center">
+                <h1 class="fw-bold" style="font-size: 50px;">Our Services</h1>
+                <hr style="width: 380px; border: #30A9FF 3px solid; margin: 0 auto;" />
+            </div>
+            <div class="col mt-5 position-relative d-flex justify-content-center gap-5">
                 <!-- Background lingkaran -->
                 <div class="position-absolute"
                     style="width: 400px; height: 400px; background-color: #30A9FF; z-index: 1; border-radius: 100%; top: 150px; right: 600px;">
@@ -161,7 +185,7 @@
                 <div class="card position-relative mt-4" style="width: 420px; z-index: 3;">
                     <img src="{{ asset('assets/img/grooming.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title" style="font-weight: bolder; font-size: 40px;">Salon</h5>
+                        <h5 class="card-title" style="font-weight: bolder; font-size: 40px;">Grooming</h5>
                         <p class="card-text">Grooming with love — we make your pets look fresh, feel great, and stay healthy.</p>
                         <div class="col d-flex gap-1">
                             <p class="px-2 py-1 rounded-5" style="font-size: 10px; background-color: #D3D3D3">Fresh</p>
@@ -192,9 +216,11 @@
         {{-- Akhir Service Section --}}
 
         {{-- Awal Testimonials Section --}}
-        <section id="services" style="padding: 60px; margin-top: 80px;">
-            <h1 class="fw-bold" style="font-size: 50px;">Testimonials</h1>
-            <hr style="width: 380px; border:#f9a700 3px solid" />
+        <section id="testimonials" style="padding: 60px; margin-top: 80px;">
+            <div class="text-center">
+                <h1 class="fw-bold" style="font-size: 50px;">Testimonials</h1>
+                <hr style="width: 380px; border:#f9a700 3px solid; margin: 0 auto;" />
+            </div>
             <div class="testi-wrapper overflow-hidden position-relative" style="width: 100%;">  
             <div class="testi mt-5 mb-1 d-flex animation-slide">
                 {{-- Testi 1 --}}
@@ -272,9 +298,11 @@
         {{-- Akhir Testimonials Section --}}
 
         {{-- Awal Contact Us --}}
-        <section id="services" style="padding: 60px; margin-top: 60px;">
-            <h1 class="fw-bold" style="font-size: 50px;">Contact Us</h1>
-            <hr style="width: 380px; border:#30A9FF 3px solid" />
+        <section id="contact" style="padding: 60px; margin-top: 60px;">
+            <div class="text-center">
+                <h1 class="fw-bold" style="font-size: 50px;">Contact Us</h1>
+                <hr style="width: 380px; border:#30A9FF 3px solid; margin: 0 auto;" />
+            </div>
             <div class="row mt-5">
                 <div class="col-6 mt-5">
                     <p><img src="{{ asset('assets/img/location.png') }}" alt="">Alam Sutera, Ruko WoodLake Blok 5, Jl. Lingkar Barat Blok 5 No. 3, Panunggangan Tim., Kec. Pinang, Kota Tangerang, Banten 15143</p>
