@@ -1,5 +1,5 @@
 {{-- Awal Navbar --}}
-<nav class="d-flex fixed-top justify-content-between align-items-center p-3 ps-5" style="background-color: white">
+<nav class="d-flex fixed-top justify-content-between align-items-center p-3 ps-5" style="background-color: white; height: 100px;">
     <img src="{{ asset('/assets/img/logo.png') }}" style="width: 150px" alt="Logo"/>
     <div style="margin-right: 200px">
         <ul class="nav me-5 fw-bold fs-5">

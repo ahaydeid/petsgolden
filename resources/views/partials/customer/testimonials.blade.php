@@ -34,7 +34,7 @@
                         <img src="{{ asset('assets/img/arnold.jpeg') }}" style="object-fit:cover; border-radius:50px; height:100px; width: 100px;" alt="">
                     </div>
                     <div class="" style="padding: 5px 30px;">
-                        <p style="font-size: 15px">“Pelayanan PetsGolden luar biasa! Grooming anjing saya jadi lebih rapi dan wangi. Stafnya ramah dan sabar, cocok banget buat hewan kesayangan.”</p>
+                        <p style="font-size: 15px">“Pertama kali coba grooming di PetsGolden dan langsung jatuh hati! Kucing saya jadi bersih, harum, dan terlihat lebih segar. Timnya profesional banget.”</p>
                         <h6 style="margin-top: -10px; font-weight: bold;">~Arnold Schwarzenegger</h6>
                     </div>
                 </div>
