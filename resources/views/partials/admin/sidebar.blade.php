@@ -39,9 +39,9 @@
                     <a class="collapse-item" href="/pendingrequest">
                         <i class="fas fa-clock me-2"></i> Pending
                     </a>
-                    <a class="collapse-item" href="/waitingrequest">
+                    {{-- <a class="collapse-item" href="/waitingrequest">
                         <i class="fas fa-hourglass-half me-2"></i> Waiting
-                    </a>
+                    </a> --}}
                 </div>
                 </div>
             </li>
@@ -62,9 +62,16 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="/history">
+                <a class="nav-link" href="/testimonials">
                     <i class="fas fa-comment-dots"></i>
                     <span>Testimonials</span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="/testimonials">
+                    <i class="fas fa-store"></i>
+                    <span>Store</span></a>
             </li>
 
 

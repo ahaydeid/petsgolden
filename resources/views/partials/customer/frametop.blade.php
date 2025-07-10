@@ -38,17 +38,37 @@
             }
             }
 
+            .animation-slide {
+            display: flex;
+            width: max-content;
+            animation: slide-left linear infinite;
+            animation-duration: var(--slide-duration, 300s);
+            }
+
+            
+
+            @keyframes slide-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+            }
+
+            .animation-slide2 {
+            display: flex;
+            width: max-content;
+            animation: slide-right linear infinite;
+            animation-duration: var(--slide-duration, 300s);
+            }
+
             .testi-wrapper {
             overflow: hidden;
             position: relative;
             width: 100%;
             }
 
-            .animation-slide {
-            display: flex;
-            width: max-content;
-            animation: slide-left 30s linear infinite;
-            }
             .card-testimoni {
             flex: 0 0 auto;
             padding: 18px;

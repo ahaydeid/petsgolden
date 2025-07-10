@@ -42,7 +42,7 @@
                             top: -20px;
                             left: 200px;">
                             </div>
-                    <img src="{{ asset('assets/img/hero.png') }}"
+                    <img src="{{ asset('assets/img/pet.png') }}"
                         style="
                             width: 650px;
                             position: relative;

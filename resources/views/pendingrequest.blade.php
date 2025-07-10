@@ -61,8 +61,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800 font-weight-bold">PENDING REQUEST</h1>
-                    <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p>
+                    <h1 class="h3 mb-4 text-gray-800 font-weight-bold">PENDING REQUEST</h1>
+                    {{-- <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p> --}}
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -87,6 +87,7 @@
                                             <th>Note</th>
                                             <th>Total Price</th>
                                             <th>Status</th>
+                                            <th style="white-space: nowrap;">Action</th>
                                         </tr>
                                     </thead>
                                     {{-- <tfoot>
@@ -125,7 +126,11 @@
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->note ?? '-' }}</td>
                                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
-                                            <td><button class="btn btn-secondary">{{ $item->status }}</button></td>
+                                            <td><div style="background-color: grey; padding:5px; color: white;">{{ $item->status }}</div></td>
+                                            <td style="white-space: nowrap;">
+                                                <a href="{{ route('pendingrequest.edit',['id'=>$item->id]) }}"><button class="btn btn-info"><i class="fas fa-eye"></i>&nbsp;View</button></a>
+                                                <a href=""><button class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;Reject</button></a>
+                                            </td>
                                         </tr>
 
                                         @endforeach

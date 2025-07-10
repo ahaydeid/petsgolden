@@ -2,43 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Booking;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
 
-class BookingAdminController extends Controller
+class TestimonialsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function login()
-    {
-        return view ('loginadmin');
-    }
-
     public function index()
     {
-        // $booking = Booking::all();
-        $booking = Booking::where('status', 'pending')->get();
-        return view ('pendingrequest', compact('booking'));
+        $testimonials = Testimonials::all();
+        return view ('testimonials', compact('testimonials'));
     }
-
-
-    public function ongoing()
-    {
-
-        $booking = Booking::where('status', 'ongoing')->get();
-        return view ('ongoingrequest', compact('booking'));
-    }
-
-    public function history()
-    {
-
-        $booking = Booking::where('status', 'done')->get();
-        return view ('history', compact('booking'));
-    }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -53,8 +29,23 @@ class BookingAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|min:3',
+            'testimonial' => 'required|string',
+            'foto' => 'required|image',
+        ]);
+
+        // Simpan foto ke folder public/storage/testimonials
+        if ($request->hasFile('foto')) {
+            $validated['foto'] = $request->file('foto')->store('testimonials', 'public');
+        }
+
+        Testimonials::create($validated);
+        
+        // dd($validated);
+        return redirect()->back()->with('success', 'Testimonial berhasil ditambahkan!');
     }
+
 
     /**
      * Display the specified resource.
@@ -69,9 +60,7 @@ class BookingAdminController extends Controller
      */
     public function edit(string $id)
     {
-        $booking = Booking::all();
-        $bookingDetail = Booking::findOrFail($id);
-        return view ('reviewrequest', compact('booking', 'bookingDetail'));
+        //
     }
 
     /**
