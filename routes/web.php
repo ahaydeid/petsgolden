@@ -6,9 +6,13 @@ Route::get('/', function () {
     return view('main');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+Route::get('/loginadmin', function () {
+    return view('loginadmin');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 
 Route::get('/booking', function () {
     return view('booking');
