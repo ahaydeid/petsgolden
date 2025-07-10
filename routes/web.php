@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingAdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,13 +15,15 @@ Route::get('/loginadmin', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/pendingrequest', [BookingAdminController::class,'index']);
+
 Route::get('/onprocessrequest', function () {
     return view('onprocessrequest');
 });
 
-Route::get('/booking', function () {
-    return view('booking');
-});
+
+Route::get('/booking', [BookingController::class,'index']);
 
 
 Route::get('/shop', function () {

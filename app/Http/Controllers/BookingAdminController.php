@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
-class BookingController extends Controller
+class BookingAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('booking');
+        $booking = Booking::all();
+        return view ('pendingrequest', compact('booking'));
     }
 
     /**
