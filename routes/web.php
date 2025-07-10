@@ -13,6 +13,9 @@ Route::get('/loginadmin', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+Route::get('/onprocessrequest', function () {
+    return view('onprocessrequest');
+});
 
 Route::get('/booking', function () {
     return view('booking');
