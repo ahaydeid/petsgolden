@@ -10,11 +10,35 @@ class BookingAdminController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function login()
+    {
+        return view ('loginadmin');
+    }
+
     public function index()
     {
-        $booking = Booking::all();
+        // $booking = Booking::all();
+        $booking = Booking::where('status', 'pending')->get();
         return view ('pendingrequest', compact('booking'));
     }
+
+
+    public function ongoing()
+    {
+
+        $booking = Booking::where('status', 'ongoing')->get();
+        return view ('ongoingrequest', compact('booking'));
+    }
+
+    public function history()
+    {
+
+        $booking = Booking::where('status', 'done')->get();
+        return view ('history', compact('booking'));
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

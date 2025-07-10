@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Admin - PETSGOLDEN</title>
+    <title>ADMIN - PETSGOLDEN</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/golden-title.ico') }}"/>
     <!-- Custom fonts for this template -->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -61,8 +61,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800 font-weight-bold">PENDING REQUEST</h1>
-                    <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p>
+                    <h1 class="h3 mb-4 text-gray-800 font-weight-bold">SERVICES ON GOING</h1>
+                    {{-- <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p> --}}
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -100,7 +100,7 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-                                        @foreach ($booking as $item )                                          
+                                         @foreach ($booking as $item )                                          
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
@@ -125,7 +125,7 @@
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->note ?? '-' }}</td>
                                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
-                                            <td><button class="btn btn-secondary">{{ $item->status }}</button></td>
+                                            <td><button class="btn btn-warning">{{ $item->status }}</button></td>
                                         </tr>
 
                                         @endforeach

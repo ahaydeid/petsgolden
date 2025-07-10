@@ -18,11 +18,7 @@
     </a>
 </div>
 <div class="booking d-flex justify-content-center" style="margin-bottom: 150px">
-<form method="POST" action="" style="
-    width: 90%;
-    background-color: white;
-    padding: 50px;
-    box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
+<form method="POST" action="{{ route('booking.store') }}" style=" width: 90%; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
     @csrf
 
     <div class="row">
