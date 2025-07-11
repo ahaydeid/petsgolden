@@ -44,10 +44,11 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('testimonials.store') }}" style=" width: 90%; margin-bottom: 100px; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('testimonials.update', ['id' => $testimonialsDetail->id]) }}" style=" width: 90%; margin-bottom: 100px; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
                     @csrf
+                    @method('PUT')
                     <div class="row">
-                        <h1 class="text-center mb-5 fw-bold">CUSTOMER TESTIMONIALS</h1>
+                        <h1 class="text-center mb-5 fw-bold">EDIT CUSTOMER TESTIMONIALS</h1>
                         <!-- LEFT SIDE -->
                         {{-- <div class="col mb-5"> --}}
                             <!-- Customer Data -->
@@ -55,90 +56,48 @@
                                 <h3 class="text-center fw-bold">Customer Data</h3>
                                 <div class="mb-3">
                                     <label for="name" class="form-label fw-bold fs-5">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="" required>
+                                    <input type="text" value="{{ old('name', $testimonialsDetail->name??'') }}" name="name" class="form-control" id="name" placeholder="" required>
                                     {{-- required --}}
                                 </div>
 
                                  <!-- Testimonials Description-->
                                 <div class="mb-3">
                                     <label for="testimonial" class="form-label fw-bold fs-5">Testimonials Description</label>
-                                    <textarea name="testimonial" class="form-control" id="testimonial" style="height: 150px;" placeholder="" required></textarea>
+                                    <textarea name="testimonial" class="form-control" id="testimonial" style="height: 150px;" placeholder="" required>{{ old('testimonial', $testimonialsDetail->testimonial??'') }}</textarea>
                                 </div>
 
 
                                 <div class="mb-3">
-                                <label for="foto" class="form-label fw-bold fs-5">Foto</label>
+                                <label for="foto" class="form-label fw-bold fs-5">Photo</label>
+                                <img style="margin: 5px; width: 100px; border-radius: 10px;" src="{{ asset('storage/' . (old('foto', $testimonialsDetail->foto ?? $item->foto))) }}" style="width: 100px" alt="Customer Photo">
                                 <input class="form-control" name="foto" type="file" id="foto">
                                 </div>
                             </div>
                         {{-- </div> --}}
-                        <button type="submit" class="btn btn-success fw-bold fs-3 py-3 px-5 fw-bold">Submit</button>
+                        <div class="row">
+                            <div class="col-6">
+                            <a href="../">                        
+                            <button
+                                class="btn btn-primary fw-bold fs-3 py-3 px-5">
+                                Back
+                            </button>
+                            </a>
+                            </div>
+                            <div class="col-6">
+                            <button
+                                type="submit"
+                                class="btn btn-success fw-bold fs-3 py-3 px-5"
+                                onclick="return confirm('Update This Data?')">
+                                Update
+                            </button>
+
+                            </div>
+                        </div>
                     </div>
                 </form>
 
                 </div>
                 <!-- /.container-fluid -->
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr style="background-color: #30a9ff; color: white;">
-                                            <th>No.</th>
-                                            <th>Nama</th>
-                                            <th>Testimonials Description</th>
-                                            <th>Foto</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    {{-- <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> --}}
-                                    <tbody>
-                                        @foreach ($testimonials as $item )                                          
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>
-                                                <p style="
-                                                max-height: 90px;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                display: -webkit-box;
-                                                -webkit-line-clamp: 3;
-                                                -webkit-box-orient: vertical;">
-                                                    {{ $item->testimonial }}
-                                                </p>
-                                            </td>
-                                            <td>{{ $item->foto }}</td>
-                                            <td>
-                                                <a href="{{ route('testimonials.edit',['id'=>$item->id]) }}"><button class="btn btn-warning"><i class="fas fa-edit"></i>&nbsp;Edit</button></a>
-                                                <form action="{{ route('testimonials.delete',['id'=>$item->id]) }}" method="post" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-
-                                                <button type="submit" class="btn btn-danger fw-bold" onclick="return confirm('Are You Sure Want To Delete This Data?')">
-                                                    <i class="fas fa-trash"></i>Submit
-                                                </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 
             </div>
             <!-- End of Main Content -->

@@ -44,8 +44,11 @@ Route::get('/history', [BookingAdminController::class, 'history']);
 
 
 // Testimonial
-Route::get('/testimonials', [TestimonialsController::class, 'index']);
+Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials.index');
 Route::post('/testimonials', [TestimonialsController::class, 'store'])->name('testimonials.store');
+Route::get('/testimonials/{id}/edit', [TestimonialsController::class,'edit'])->name('testimonials.edit');
+Route::put('/testimonials/{id}/update', [TestimonialsController::class, 'update'])->name('testimonials.update');
+Route::delete('/testimonials/{id}/delete', [TestimonialsController::class, 'destroy'])->name('testimonials.delete');
 
 
 Route::get('/shop', function () {

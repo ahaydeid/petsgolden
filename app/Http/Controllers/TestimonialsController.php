@@ -60,7 +60,9 @@ class TestimonialsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $testimonials = Testimonials::all();
+        $testimonialsDetail = Testimonials::findOrFail($id);
+        return view ('edittestimonials', compact('testimonials', 'testimonialsDetail'));
     }
 
     /**
@@ -68,14 +70,39 @@ class TestimonialsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $testimonials = Testimonials::findOrFail($id);
+
+        // Validasi input (foto tidak wajib saat update)
+        $validated = $request->validate([
+            'name' => 'required|string|min:3',
+            'testimonial' => 'required|string',
+            'foto' => 'nullable|image',
+        ]);
+
+        // Jika ada foto baru di-upload
+        if ($request->hasFile('foto')) {
+            // Simpan foto baru
+            $validated['foto'] = $request->file('foto')->store('testimonials', 'public');
+        } else {
+            // Gunakan foto lama
+            $validated['foto'] = $testimonials->foto;
+        }
+
+        // Update data
+        $testimonials->update($validated);
+
+        return redirect()->route('testimonials.index')->with('success', 'Testimonial updated!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $testimonialsDetail = Testimonials::findOrFail($id);
+        $testimonialsDetail->delete();
+        return redirect()->route('testimonials.index')->with('success', 'Testimonial deleted!');
+        
     }
 }
