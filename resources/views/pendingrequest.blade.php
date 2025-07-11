@@ -129,7 +129,7 @@
                                             <td><div style="background-color: grey; padding:5px; color: white;">{{ $item->status }}</div></td>
                                             <td style="white-space: nowrap;">
                                                 <a href="{{ route('pendingrequest.edit',['id'=>$item->id]) }}"><button class="btn btn-info"><i class="fas fa-eye"></i>&nbsp;View</button></a>
-                                                <a href=""><button class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;Reject</button></a>
+                                                {{-- <a href=""><button class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;Reject</button></a> --}}
                                             </td>
                                         </tr>
 

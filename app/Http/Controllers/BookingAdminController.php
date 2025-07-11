@@ -79,8 +79,21 @@ class BookingAdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+
+        // Status logic dari tombol
+        if ($request->input('action') === 'accept') {
+            $booking->status = 'waiting';
+        } elseif ($request->input('action') === 'reject') {
+            $booking->status = 'rejected';
+        }
+
+        $booking->save();
+
+        return redirect()->route('pendingrequest.index')->with('success', 'Request updated!');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

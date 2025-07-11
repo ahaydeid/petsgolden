@@ -10,16 +10,31 @@
     <meta name="author" content="">
     
     <title>Admin - PETSGOLDEN</title>
-    
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/golden-title.ico') }}"/>
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <style>
+        .table td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        .table-responsive {
+        overflow-x: auto;
+    }
+
+    </style>
 
 </head>
 
@@ -39,107 +54,91 @@
             <div id="content">
 
                 <!-- Topbar -->
-                    @include('partials.admin.topbar')
+                @include('partials.admin.topbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    <h1 class="h3 mb-4 text-gray-800 font-weight-bold">PENDING REQUEST</h1>
+                    {{-- <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p> --}}
 
-                    <!-- Content Row -->
-                    <div class="row">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr style="background-color: #30a9ff; color: white;">
+                                            <th>No.</th>
+                                            <th>Nama</th>
+                                            <th>Whatsapp</th>
+                                            <th>Email</th>
+                                            <th>Branch</th>
+                                            <th>Pet Type</th>
+                                            <th>Race</th>
+                                            <th>Pet Name</th>
+                                            <th>Services</th>
+                                            <th>Additional Request</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Address</th>
+                                            <th>Note</th>
+                                            <th>Total Price</th>
+                                            <th>Status</th>
+                                            <th style="white-space: nowrap;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot> --}}
+                                    <tbody>
+                                        @foreach ($booking as $item )                                          
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->wa_number }}</td>
+                                            <td>{{ $item->email ?? '-' }}</td>
+                                            <td>{{ $item->branch }}</td>
+                                            <td>{{ $item->pet_type }}</td>
+                                            <td>{{ $item->race ?? '-' }}</td>
+                                            <td>{{ $item->pet_name ?? '-' }}</td>
+                                            <td>
+                                                @php
+                                                    $services = is_array($item->services) ? $item->services : json_decode($item->services, true);
+                                                @endphp
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                {{ is_array($services) ? implode(', ', $services) : '-' }}
+                                            </td>
+                                            <td>{{ $item->additional_request ?? '-' }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->time)->format('H:i') }}</td>
+                                            {{-- <td>{{ $item->date }}</td
+                                            <td>{{ $item->time }}</td> --}}
+                                            <td>{{ $item->address }}</td>
+                                            <td>{{ $item->note ?? '-' }}</td>
+                                            <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
+                                            <td><div style="background-color: grey; padding:5px; color: white;">{{ $item->status }}</div></td>
+                                            <td style="white-space: nowrap;">
+                                                <a href="{{ route('pendingrequest.edit',['id'=>$item->id]) }}"><button class="btn btn-info"><i class="fas fa-eye"></i>&nbsp;View</button></a>
+                                                {{-- <a href=""><button class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;Reject</button></a> --}}
+                                            </td>
+                                        </tr>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Content Row -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -151,7 +150,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; {{ date('Y') }} PetsGolden. All rights reserved.</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -182,7 +181,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/loginadmin?">Logout</a>
+                    <a class="btn btn-danger" href="/loginadmin">Logout</a>
                 </div>
             </div>
         </div>
@@ -199,11 +198,13 @@
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
+
+
 
 </body>
 

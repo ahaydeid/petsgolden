@@ -63,13 +63,19 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800 font-weight-bold">REVIEW REQUEST</h1>
                     {{-- <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p> --}}
+{{-- @php dd($bookingDetail->id); @endphp --}}
+{{-- <pre>
+bookingDetail: {{ json_encode($bookingDetail) }}
+bookingDetail->id: {{ $bookingDetail->id ?? 'NULL' }}
+</pre> --}}
+{{-- <p>Generated route: {{ route('pendingrequest.update', ['id' => $bookingDetail->id]) }}</p> --}}
 
                 <div class="booking d-flex justify-content-center" style="margin-bottom: 150px">
-                <form method="PUT" action="{{ route('pendingrequest.update', ['id'=>$bookingDetail->id]) }}" style=" width: 90%; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
+                <form method="POST" action="{{ route('pendingrequest.update', ['id'=>$bookingDetail->id]) }}" style=" width: 90%; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
                     @csrf
                     @method('PUT')
 
-                    <h1 class="text-center mb-5 fw-bold">BOOKING FOR SERVICE</h1>
+                    <h1 class="text-center mb-5 fw-bold">BOOKING FOR SERVICE DETAIL</h1>
                     <div class="row">
 
                         <!-- LEFT SIDE -->
@@ -79,59 +85,68 @@
                                 <h3 class="text-center fw-bold">Customer Data</h3>
 
                                 <div class="mb-3">
-                                    <label for="name" class="form-label fw-bold fs-5">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Evelyn" >
+                                    <h6>Name: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color: black">{{ old('name', $bookingDetail->name??'') }}</span>
+                                    </div>
+                                    <input type="hidden" name="name" class="form-control" id="name" value="{{ old('name', $bookingDetail->name??'') }}" >
                                     {{-- required --}}
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="wa_number" class="form-label fw-bold fs-5">WhatsApp</label>
-                                    <input type="number" name="wa_number" class="form-control" id="wa_number" placeholder="08123456789" >
+                                    <h6>WhatsApp: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color:black;">{{ old('wa_number', $bookingDetail->wa_number??'') }}</span>                                    
+                                    </div>
+                                    <input type="hidden" name="wa_number" class="form-control" id="wa_number" value="{{ old('wa_number', $bookingDetail->wa_number??'') }}" >
                                     {{-- required --}}
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="email" class="form-label fw-bold fs-5">Email <i class="text-muted fs-6">(Optional)</i></label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="evelyn@mail.com">
+                                    <h6>Email: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color:black;">{{ old('email', $bookingDetail->email??'') }}</span>
+                                    </div>
+                                    <input type="hidden" name="email" class="form-control" id="email" value="{{ old('email', $bookingDetail->email??'') }}">
                                 </div>
 
                                 <!-- Location Dropdown -->
                                 <div class="mb-3">
-                                    <label for="branch" class="form-label fw-bold fs-5">Service Branch</label>
-                                    <select name="branch" id="branch" class="form-select" >
-                                        {{-- required --}}
-                                        <option value="" disabled selected>Select a branch</option>
-                                        <option value="Jakarta">Jakarta</option>
-                                        <option value="Tangerang">Tangerang</option>
-                                        <option value="Bogor">Bogor</option>
-                                        <option value="Depok">Depok</option>
-                                    </select>
+                                    <h6>Branch: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                    </div>
+                                    <span class="font-weight-bold h5" style="color: black">{{ old('branch', $bookingDetail->branch??'') }}</span>
+                                    <input name="branch" type="hidden" value="{{ old('branch', $bookingDetail->branch??'') }}" id="branch" class="form-select" >
+                                    </input>
                                 </div>
                             </div>
 
                             <!-- Pet Data -->
                             <div class="pet mt-3 px-4 py-3" style="background-color: #FAFAFA;">
                                 <h3 class="text-center fw-bold">Pet Data</h3>
-
                                 <div class="mb-3">
-                                    <label for="pet_type" class="form-label fw-bold fs-5">Pet Type</label>
-                                    <select name="pet_type" id="pet_type" class="form-select" >
-                                        {{-- required --}}
-                                        <option value="" disabled selected>Select pet type</option>
-                                        <option value="Cat">Cat</option>
-                                        <option value="Dog">Dog</option>
-                                        <option value="Snake">Snake</option>
-                                    </select>
+                                    <h6>Pet Type: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color:black">{{ old('pet_type', $bookingDetail->pet_type??'') }}</span>
+                                    </div>
+                                    <input name="pet_type" type="hidden" id="pet_type" class="form-select" value="{{ old('pet_type', $bookingDetail->pet_type??'') }}">
+                                    </input>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="race" class="form-label fw-bold fs-5">Race <i class="text-muted fs-6">(Optional)</i></label>
-                                    <input type="text" name="race" class="form-control" id="race" placeholder="Persian">
+                                    <h6>Race: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color:black">{{ old('race', $bookingDetail->race??'') }}</span>
+                                    </div>
+                                    <input type="hidden" name="race" class="form-control" id="race" value="{{ old('race', $bookingDetail->race??'') }}">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="pet_name" class="form-label fw-bold fs-5">Pet Name <i class="text-muted fs-6">(Optional)</i></label>
-                                    <input type="text" name="pet_name" class="form-control" id="pet_name" placeholder="Bucky">
+                                    <h6>Pet Name: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="font-weight-bold h5" style="color:black">{{ old('pet_name', $bookingDetail->pet_name??'') }}</span>
+                                    </div>
+                                    <input type="hidden" name="pet_name" class="form-control" id="pet_name" value="{{ old('pet_name', $bookingDetail->pet_name??'') }}">
                                 </div>
                             </div>
                         </div>
@@ -141,38 +156,31 @@
                             <!-- Type Of Service -->
                             <div class="customer px-4 py-3" style="background-color: #FAFAFA;">
                                 <h3 class="text-center fw-bold">Type Of Service</h3>
-                                <label class="form-label fw-bold fs-5">Main Service</label>
+                                <h6>Main Service: </h6>
+                                @php
+                                    $servicesRaw = old('services') ?? $bookingDetail->services ?? '[]';
+                                    $services = is_string($servicesRaw) ? json_decode($servicesRaw, true) : $servicesRaw;
+                                @endphp
 
-                                <!-- Checkboxes -->
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input service-checkbox" name="services[]" value="Grooming" data-price="200000" id="grooming">
-                                    <label class="form-check-label" for="grooming">Grooming</label>
-                                </div>
+                                @foreach ($services as $service)
+                                    <span class="fonct-weight-bold h6 py-1 px-3" style="border-radius: 10px; color:white; background-color: #ff49f9">
+                                        {{ $service }}
+                                    </span>
+                                @endforeach
 
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input service-checkbox" name="services[]" value="Bathing" data-price="100000" id="bathing">
-                                    <label class="form-check-label" for="bathing">Bathing</label>
-                                </div>
+                                @foreach ($services as $service)
+                                    <input type="hidden" name="services[]" class="form-control" value="{{ $service }}">
+                                @endforeach
 
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input service-checkbox" name="services[]" value="Vit Injection" data-price="50000" id="vitinjection">
-                                    <label class="form-check-label" for="vitinjection">Vit Injection</label>
-                                </div>
 
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input service-checkbox" name="services[]" value="Shaving" data-price="50000" id="shaving">
-                                    <label class="form-check-label" for="shaving">Shaving</label>
-                                </div>
-
-                                <div class="form-check mb-3">
-                                    <input type="checkbox" class="form-check-input service-checkbox" name="services[]" value="Cutting Nails" data-price="50000" id="cuttingnails">
-                                    <label class="form-check-label" for="cuttingnails">Cutting Nails</label>
-                                </div>
 
                                 <!-- Additional Request -->
                                 <div class="mb-3">
-                                    <label for="additional_request" class="form-label fw-bold fs-5">Additional Request <i class="text-muted fs-6">(Optional)</i></label>
-                                    <textarea name="additional_request" class="form-control" id="additional_request" style="height: 150px;" placeholder="Don't spray perfume"></textarea>
+                                    <h6 class="mt-3">Additional Request: </h6>
+                                    <div class="py-2 px-2" style="background-color: white">
+                                        <span class="h5 font-weight-bold" style="color:black;">{{ old('additional_request', $bookingDetail->additional_request??'') }}</span>
+                                    </div>
+                                    <textarea name="additional_request" class="form-control d-none" id="additional_request" style="height: 150px;" placeholder="Don't spray perfume">{{ old('additional_request', $bookingDetail->additional_request??'') }}</textarea>
                                 </div>
                             </div>
 
@@ -182,38 +190,57 @@
 
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label for="date" class="form-label fw-bold fs-5">Date</label>
-                                        <input type="date" name="date" class="form-control" id="date" >
+                                        <h6 for="date" class="form-label fw-bold fs-5">Date</h6>
+                                        <span class="h5 font-weight-bold py-1 px-3" style="color:white; background-color: #53bdff">{{ \Carbon\Carbon::parse(old('date', $bookingDetail->date ?? ''))->format('d M Y') }}</span>
+                                        <input type="hidden" name="date" value="{{ old('date', $bookingDetail->date??'') }}" class="form-control" id="date" >
                                         {{-- required --}}
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label for="time" class="form-label fw-bold fs-5">Time</label>
-                                        <input type="time" name="time" class="form-control" id="time" >
+                                        <h6 for="time" class="form-label fw-bold fs-5">Time</h6>
+                                        <span class="h5 font-weight-bold py-1 px-3" style="color:white; background-color: #53bdff">{{ \Carbon\Carbon::parse(old('time', $bookingDetail->time ?? ''))->format('H:i') }}</span>
+                                        <input type="hidden" name="time" value="{{ old('time', $bookingDetail->time??'') }}" class="form-control" id="time" >
                                         {{-- required --}}
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="address" class="form-label fw-bold fs-5">Address</label>
-                                    <textarea name="address" class="form-control" id="address" style="height: 150px;"  placeholder="Alam Sutera, Ruko WoodLake Blok 5, ..."></textarea>
-                                    {{-- required --}}
+                                    <h6 class="mt-3">Address: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="h5 font-weight-bold" style="color:rgb(0, 0, 0);">{{ old('address', $bookingDetail->address??'') }}</span>
+                                    </div>
+                                    <textarea name="address" class="form-control d-none" id="address" style="height: 150px;" placeholder="Don't spray perfume">{{ old('address', $bookingDetail->address??'') }}"</textarea>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="note" class="form-label fw-bold fs-5">Note <i class="text-muted fs-6">(Optional)</i></label>
-                                    <textarea name="note" class="form-control" id="note" style="height: 150px;" placeholder="Roadworks are underway..."></textarea>
+                                 <div class="mb-3">
+                                    <h6 class="mt-3">Note: </h6>
+                                    <div class="py-2 px-2" style="background-color: #ffffff">
+                                        <span class="h5 font-weight-bold" style="color:rgb(0, 0, 0);">{{ old('note', $bookingDetail->note??'') }}</span>
+                                    </div>
+                                    <textarea name="note" class="form-control d-none" id="note" style="height: 150px;" placeholder="Don't spray perfume">{{ old('note', $bookingDetail->note??'') }}"</textarea>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Total & Submit -->
                         <div class="row">
-                            <h4>Total Bill:</h4>
-                            <h4 class="bill">Rp <span class="fw-bold fs-1" id="totalPrice">-</span></h4>
+                            <div class="col-12">
+                                <h4>Total Bill:</h4>
+                                <h2 class="bill font-weight-bold">Rp <span class="fw-bold fs-1" id="totalPrice">{{ old('total_price', $bookingDetail->total_price??'') }}</span></h2>
+                                <input type="hidden" value="{{ old('total_price', $bookingDetail->total_price??'') }}" name="total_price" id="total_price">
+                            </div>
                         </div>
-                        <input type="hidden" name="total_price" id="total_price">
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="../"><button type="" name="" style="font-size:30px; width: 100%;" class="btn btn-primary font-weight-bold py-1"><i class="fas fa-arrow-left"></i>&nbsp;Back</button></a>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" name="action" value="reject" style="font-size:30px; width: 100%;" class="btn btn-danger font-weight-bold py-1"><i class="fas fa-times"></i>&nbsp;Reject</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" name="action" value="accept" style="font-size:30px; width: 100%;" class="btn btn-success font-weight-bold py-1"><i class="fas fa-check"></i>&nbsp;Accept</button>
+                        </div>
 
-                        <button type="submit" class="btn btn-success fw-bold fs-3 py-1">Submit</button>
                     </div>
                 </form>
 

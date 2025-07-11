@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingAdminController;
+use App\Http\Controllers\WaitingListController;
 use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,16 @@ Route::post('/booking', [BookingController::class,'store'])->name('booking.store
 // Pending Request
 Route::get('/pendingrequest', [BookingAdminController::class,'index'])->name('pendingrequest.index');
 Route::get('/pendingrequest/{id}/edit', [BookingAdminController::class,'edit'])->name('pendingrequest.edit');
-Route::put('/pendingrequest/{id}/update', [TestimonialsController::class, 'update'])->name('pendingrequest.update');
+Route::put('/pendingrequest/{id}/update', [BookingAdminController::class, 'update'])->name('pendingrequest.update');
 
 
-// Ongoing Request
+// Waiting List
+Route::get('/waitingrequest', [WaitingListController::class,'index'])->name('waitingrequest.index');
+Route::get('/waitingrequest/{id}/edit', [WaitingListController::class,'edit'])->name('waitingrequest.edit');
+Route::put('/waitingrequest/{id}/update', [WaitingListController::class, 'update'])->name('waitingrequest.update');
+
+
+// Ongoing Service
 Route::get('/ongoingrequest', [BookingAdminController::class, 'ongoing']);
 
 

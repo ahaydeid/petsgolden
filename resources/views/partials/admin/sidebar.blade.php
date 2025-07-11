@@ -37,29 +37,37 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/pendingrequest">
-                        <i class="fas fa-clock me-2"></i> Pending
+                        <i class="fas fa-clock me-2"></i>
+                        <span>Pending</span>
                     </a>
-                    {{-- <a class="collapse-item" href="/waitingrequest">
-                        <i class="fas fa-hourglass-half me-2"></i> Waiting
-                    </a> --}}
                 </div>
                 </div>
             </li>
 
-             <!-- Nav Item - Charts -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="/waitingrequest">
+                    <i class="fas fa-hourglass-half me-2"></i> 
+                    <span>Waiting List</span>
+                </a>
+            </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="/ongoingrequest">
                     <i class="fas fa-spinner fa-spin"></i>
-                    <span>On Going</span></a>
+                    <span>On Going</span>
+                </a>
             </li>
+
+            <hr class="sidebar-divider">
+
 
             <li class="nav-item">
                 <a class="nav-link" href="/history">
                     <i class="fas fa-history"></i>
                     <span>History</span></a>
             </li>
-            
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link" href="/testimonials">

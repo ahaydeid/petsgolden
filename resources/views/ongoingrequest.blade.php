@@ -87,6 +87,7 @@
                                             <th>Note</th>
                                             <th>Total Price</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     {{-- <tfoot>
@@ -125,7 +126,10 @@
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->note ?? '-' }}</td>
                                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
-                                            <td><button class="btn btn-warning">{{ $item->status }}</button></td>
+                                            <td><div style="background-color: rgb(255, 204, 0); padding:5px; color: white;">{{ $item->status }}</div></td>
+                                            <th>
+                                                <a href=""><button class="btn btn-primary" >Change</button></a>
+                                            </th>
                                         </tr>
 
                                         @endforeach

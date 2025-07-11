@@ -55,14 +55,14 @@
                                 <h3 class="text-center fw-bold">Customer Data</h3>
                                 <div class="mb-3">
                                     <label for="name" class="form-label fw-bold fs-5">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Evelyn" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="" required>
                                     {{-- required --}}
                                 </div>
 
                                  <!-- Testimonials Description-->
                                 <div class="mb-3">
                                     <label for="testimonial" class="form-label fw-bold fs-5">Testimonials Description</label>
-                                    <textarea name="testimonial" class="form-control" id="testimonial" style="height: 150px;" placeholder="Don't spray perfume" required></textarea>
+                                    <textarea name="testimonial" class="form-control" id="testimonial" style="height: 150px;" placeholder="" required></textarea>
                                 </div>
 
 
@@ -120,7 +120,12 @@
                                                 </p>
                                             </td>
                                             <td>{{ $item->foto }}</td>
-                                            <td><button class="btn btn-secondary">Edit</button></td>
+                                            <td>
+                                                <a href="">
+                                                    <button class="btn btn-secondary">Edit</button>
+                                                </a>
+                                                <button class="btn btn-secondary">Delete</button>
+                                            </td>
                                         </tr>
 
                                         @endforeach

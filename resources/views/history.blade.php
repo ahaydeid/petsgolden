@@ -125,7 +125,7 @@
                                             <td>{{ $item->address }}</td>
                                             <td>{{ $item->note ?? '-' }}</td>
                                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
-                                            <td><button class="btn btn-success">{{ $item->status }}</button></td>
+                                            <td><div style="background-color: rgb(19, 255, 7); padding:5px; color: white; text-align: center;">{{ $item->status }}</div></td>
                                         </tr>
 
                                         @endforeach
