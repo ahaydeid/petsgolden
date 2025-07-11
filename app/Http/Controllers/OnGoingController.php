@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 
-class WaitingListController extends Controller
+class OnGoingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $booking = Booking::where('status', 'waiting')->get();
-        return view ('waitingrequest', compact('booking'));
+        //
     }
 
     /**
@@ -47,8 +46,9 @@ class WaitingListController extends Controller
     {
         $booking = Booking::all();
         $bookingDetail = Booking::findOrFail($id);
-        return view ('editwaiting', compact('booking', 'bookingDetail'));
+        return view ('editongoing', compact('booking', 'bookingDetail'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -57,10 +57,11 @@ public function update(Request $request, $id)
 {
     $booking = Booking::findOrFail($id);
 
-    $booking->status = 'ongoing';
+    // Karena hanya ada satu opsi "ongoing", langsung set
+    $booking->status = 'done';
 
     $booking->save();
-    return redirect()->route('waitingrequest.index')->with('success', 'Request updated!');
+    return redirect()->route('ongoingrequest.ongoing')->with('success', 'Request updated!');
 }
 
     /**

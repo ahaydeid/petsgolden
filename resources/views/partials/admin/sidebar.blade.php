@@ -27,10 +27,9 @@
             </div> --}}
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    {{-- <i class="fas fa-fw fa-cog"></i> --}}
                     <i class="fas fa-book"></i>
                     <span>Booking</span>
                 </a>
@@ -42,8 +41,15 @@
                     </a>
                 </div>
                 </div>
-            </li>
+            </li> --}}
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="/pendingrequest">
+                    <i class="fas fa-book"></i>
+                    <span>Booking</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="/waitingrequest">

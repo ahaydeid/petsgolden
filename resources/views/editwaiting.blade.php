@@ -163,7 +163,7 @@ bookingDetail->id: {{ $bookingDetail->id ?? 'NULL' }}
                                 @endphp
 
                                 @foreach ($services as $service)
-                                    <span class="fonct-weight-bold h6 py-1 px-3" style="border-radius: 10px; color:white; background-color: #ff49f9">
+                                    <span class="fonct-weight-bold h6 ml-1 py-1 px-3" style="border-radius: 10px; color:white; background-color: #ff49f9">
                                         {{ $service }}
                                     </span>
                                 @endforeach

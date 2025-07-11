@@ -61,7 +61,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800 font-weight-bold">REVIEW REQUEST</h1>
+                    {{-- <h1 class="h3 mb-4 text-gray-800 font-weight-bold">REVIEW WAITING LIST</h1> --}}
                     {{-- <p class="mb-4">Here is a list of bookings from customers who want to use the service, you can confirm with "Accept", or reject if the incoming data is invalid (e.g. spam) with "Reject". </p> --}}
 {{-- @php dd($bookingDetail->id); @endphp --}}
 {{-- <pre>
@@ -71,11 +71,11 @@ bookingDetail->id: {{ $bookingDetail->id ?? 'NULL' }}
 {{-- <p>Generated route: {{ route('pendingrequest.update', ['id' => $bookingDetail->id]) }}</p> --}}
 
                 <div class="booking d-flex justify-content-center" style="margin-bottom: 150px">
-                <form method="POST" action="{{ route('pendingrequest.update', ['id'=>$bookingDetail->id]) }}" style=" width: 90%; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
+                <form method="POST" action="{{ route('ongoingrequest.update', ['id'=>$bookingDetail->id]) }}" style=" width: 90%; background-color: white; padding: 50px; box-shadow: 2px 2px 13px rgba(168,168,168,0.75);">
                     @csrf
                     @method('PUT')
 
-                    <h1 class="text-center mb-5 fw-bold">BOOKING FOR SERVICE DETAIL</h1>
+                    <h1 class="text-center mb-5 fw-bold">COMPLETE THE PROCESS</h1>
                     <div class="row">
 
                         <!-- LEFT SIDE -->
@@ -234,11 +234,11 @@ bookingDetail->id: {{ $bookingDetail->id ?? 'NULL' }}
                         <div class="col-4">
                             <a href="../"><button type="" name="" style="font-size:30px; width: 100%;" class="btn btn-primary font-weight-bold py-1"><i class="fas fa-arrow-left"></i>&nbsp;Back</button></a>
                         </div>
-                        <div class="col-4">
+                        {{-- <div class="col-4">
                             <button type="submit" name="action" value="reject" style="font-size:30px; width: 100%;" class="btn btn-danger font-weight-bold py-1"><i class="fas fa-times"></i>&nbsp;Reject</button>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" name="action" value="accept" style="font-size:30px; width: 100%;" class="btn btn-success font-weight-bold py-1"><i class="fas fa-check"></i>&nbsp;Accept</button>
+                        </div> --}}
+                        <div class="col-8">
+                            <button type="submit" name="action" value="done" style="font-size:30px; width: 100%;" class="btn btn-success font-weight-bold py-1"><i class="fa fa-check"></i>&nbsp;Finish Process</button>
                         </div>
 
                     </div>
