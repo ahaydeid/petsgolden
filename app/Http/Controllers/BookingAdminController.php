@@ -10,10 +10,10 @@ class BookingAdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function login()
-    {
-        return view ('loginadmin');
-    }
+    // public function login()
+    // {
+    //     return view ('loginadmin');
+    // }
 
     public function index()
     {
