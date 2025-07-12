@@ -87,6 +87,7 @@
                                             <th>Note</th>
                                             <th>Total Price</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     {{-- <tfoot>
@@ -100,7 +101,7 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-                                                                                @foreach ($booking as $item )                                          
+                                        @foreach ($booking as $item )                                          
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
@@ -126,6 +127,11 @@
                                             <td>{{ $item->note ?? '-' }}</td>
                                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
                                             <td><div style="background-color: rgb(19, 255, 7); padding:5px; color: white; text-align: center;">{{ $item->status }}</div></td>
+                                            <td>
+                                                <a href="{{ route('booking.cetak', $item->id) }}" target="_blank" class="btn btn-primary fw-bold">
+                                                    <i class="fas fa-print"></i> Cetak PDF
+                                                </a>
+                                            </td>
                                         </tr>
 
                                         @endforeach
