@@ -83,7 +83,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="/testimonials">
+                <a class="nav-link" href="{{ route('store.admin') }}">
                     <i class="fas fa-store"></i>
                     <span>Store</span></a>
             </li>

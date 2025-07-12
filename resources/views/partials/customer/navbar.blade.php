@@ -16,7 +16,7 @@
                 <a class="nav-link text-dark" href="#contact">Contact</a>
             </li>
             <li class="nav-item justify-content-betwen">
-                <a class="nav-link" href="/shop"><button class="btn btn-primary fw-bold">Shop <img class="ms-3 w-25" src="{{ asset('assets/img/cart.png') }}" alt=""> </button></a>
+                <a class="nav-link" href="{{ route('store.customer') }}"><button class="btn btn-primary fw-bold">Shop <img class="ms-3 w-25" src="{{ asset('assets/img/cart.png') }}" alt=""> </button></a>
             </li>
         </ul>
     </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingAdminController;
 use App\Http\Controllers\WaitingListController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\OnGoingController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index']);
@@ -53,6 +54,15 @@ Route::post('/testimonials', [TestimonialsController::class, 'store'])->middlewa
 Route::get('/testimonials/{id}/edit', [TestimonialsController::class,'edit'])->middleware('auth')->name('testimonials.edit');
 Route::put('/testimonials/{id}/update', [TestimonialsController::class, 'update'])->middleware('auth')->name('testimonials.update');
 Route::delete('/testimonials/{id}/delete', [TestimonialsController::class, 'destroy'])->middleware('auth')->name('testimonials.delete');
+
+// Store
+Route::get('/store', [StoreController::class, 'customer'])->name('store.customer');
+// Store Admin
+Route::get('/storeadmin', [StoreController::class, 'index'])->middleware('auth')->name('store.admin');
+Route::post('/store', [StoreController::class, 'store'])->middleware('auth')->name('store.store');
+Route::get('/store/{id}/edit', [StoreController::class,'edit'])->middleware('auth')->name('store.edit');
+Route::put('/store/{id}/update', [StoreController::class, 'update'])->middleware('auth')->name('store.update');
+Route::delete('/store/{id}/delete', [StoreController::class, 'destroy'])->middleware('auth')->name('store.delete');
 
 
 
