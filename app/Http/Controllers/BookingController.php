@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 
@@ -85,4 +85,11 @@ public function store(Request $request)
     {
         //
     }
+    public function cetak($id)
+    {
+        $bookingDetail = Booking::findOrFail($id); // Pastikan relasi sudah benar
+        $pdf = Pdf::loadView('booking.pdf', compact('bookingDetail'));
+        return $pdf->download('booking-detail-'.$id.'.pdf');
+    }
+
 }

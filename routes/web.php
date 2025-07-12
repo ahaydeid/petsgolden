@@ -46,6 +46,8 @@ Route::put('/ongoingingrequest/{id}/update', [OnGoingController::class, 'update'
 
 // Service History
 Route::get('/history', [BookingAdminController::class, 'history'])->middleware('auth');
+Route::get('/booking/{id}/cetak', [BookingController::class, 'cetak'])->name('booking.cetak');
+
 
 
 // Testimonial
