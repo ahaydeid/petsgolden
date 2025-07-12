@@ -119,17 +119,21 @@
                                                     {{ $item->testimonial }}
                                                 </p>
                                             </td>
-                                            <td>{{ $item->foto }}</td>
                                             <td>
-                                                <a href="{{ route('testimonials.edit',['id'=>$item->id]) }}"><button class="btn btn-warning"><i class="fas fa-edit"></i>&nbsp;Edit</button></a>
-                                                <form action="{{ route('testimonials.delete',['id'=>$item->id]) }}" method="post" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
+                                                <img src="{{ asset('storage/' . $item->foto) }}" style="object-fit:cover; border-radius:10px; height:100px; width: 100px;" alt="">
+                                            </td>
+                                            <td style="width: 220px;">
+                                                <div class="d-flex gap-1">
+                                                    <a href="{{ route('testimonials.edit',['id'=>$item->id]) }}"><button class="ms-1 btn btn-warning"><i class="fas fa-edit"></i>&nbsp;Edit</button></a>
+                                                    <form action="{{ route('testimonials.delete',['id'=>$item->id]) }}" method="post" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
 
-                                                <button type="submit" class="btn btn-danger fw-bold" onclick="return confirm('Are You Sure Want To Delete This Data?')">
-                                                    <i class="fas fa-trash"></i>Submit
-                                                </button>
-                                                </form>
+                                                    <button type="submit" class="ml-2 btn btn-danger fw-bold" onclick="return confirm('Are You Sure Want To Delete This Data?')">
+                                                        <i class="fas fa-trash"></i>Submit
+                                                    </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
 

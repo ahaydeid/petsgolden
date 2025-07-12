@@ -7,12 +7,11 @@
                         We are true animal lovers who care <br />for your pets
                         with all our hearts.
                     </p>
-                    <div class="sosmed d-flex gap-3 pt-5" style="margin-top: 60px">
-                        <img src="{{ asset('assets/img/instagram.png') }}"
-                            alt=""/>
-                        <img src="{{ asset('assets/img/facebook.png') }}"
-                            alt=""/> <img src="{{ asset('assets/img/telegram.png') }}"
-                            alt="" /> <img src="{{ asset('assets/img/wa.png') }}" alt="" />
+                    <div class="sosmed d-flex gap-3 pt-5" style="margin-top: 100px">
+                        <a href="https://www.instagram.com/petsgoldendotcom/" target="_blank"><img src="{{ asset('assets/img/instagram.png') }}"alt=""/></a>
+                        <a href="https://web.facebook.com/petsgoldendotcom/?_rdc=1&_rdr" target="_blank"><img src="{{ asset('assets/img/facebook.png') }}" alt=""/> </a>
+                        <a href="https://t.me/Petsgolden" target="_blank"><img src="{{ asset('assets/img/telegram.png') }}" alt="" /> </a>
+                        <a href="https://api.whatsapp.com/send?phone=6282211187118&text=Halo%20Petsgolden,%20ingin%20Grooming%20Boleh%20Minta%20Infonya" target="_blank"><img src="{{ asset('assets/img/wa.png') }}" alt="" /></a>
                     </div>
                     <div class="button mt-3">
                         <a href="/booking"><button type="button" class="btn text-light fw-bold px-5" style="box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75); -webkit-box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75); -moz-box-shadow: 4px 4px 14px -6px rgba(0, 0, 0, 0.75); font-size: 25px; background-color: #30a9ff; border-radius: 50px;">Book Now</button></a>

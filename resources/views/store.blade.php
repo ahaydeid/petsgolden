@@ -36,7 +36,7 @@
                     </div>
                     <span class="card-title"><span class="fw-bold">{{ $item->jumlah }}</span> pcs</span>
                     <h6 class="card-title">Rp {{ $item->harga }}</h6>
-                    <a href="wa.me/6282211187118" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>&nbsp;Buy Now</a>
+                    <a href="https://api.whatsapp.com/send?phone=6282211187118&text=Halo%20Petsgolden,%20ingin%20Grooming%20Boleh%20Minta%20Infonya" target="_blank" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>&nbsp;Buy Now</a>
                 </div>
             </div>
         </div>
